@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homolemo Ntswane | AI Intern</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4fd1c5;
+            --primary-dark: #38b2ac;
+            --secondary: #3b4a6b;
+            --dark: #1a202c;
+            --light: #f7fafc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #3b4a6b, #2c3e50, #1a202c);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: #f7fafc;
+            letter-spacing: 0.05em;
+            font-size: 1.75rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            border-radius: 9999px;
+        }
+
+        .card {
+            background-color: rgba(45, 55, 72, 0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 1.25rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 2.5rem;
+            border: 1px solid rgba(74, 85, 104, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+        
+        .badge {
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .badge-primary {
+            background: rgba(79, 209, 197, 0.15);
+            color: var(--primary);
+        }
+        .badge-primary:hover {
+            background: rgba(79, 209, 197, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .badge-secondary {
+            background: rgba(129, 230, 217, 0.15);
+            color: #81e6d9;
+        }
+        .badge-secondary:hover {
+            background: rgba(129, 230, 217, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 4px rgba(79, 209, 197, 0.3);
+        }
+        
+        .project-card {
+            background: rgba(45, 55, 72, 0.7);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--primary);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: #e2e8f0;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(79, 209, 197, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(45, 55, 72, 0.7);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            font-size: 4rem;
+            color: rgba(79, 209, 197, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        footer {
+            background: rgba(26, 32, 44, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .achievement-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        .achievement-item::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="py-6 px-6 md:px-12 lg:px-24 fixed w-full z-50 backdrop-blur-md bg-opacity-80 bg-dark border-b border-gray-800">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-light">
+                <span class="text-primary">HN</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="md:hidden text-gray-400">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero pt-24 px-6 md:px-12 lg:px-24">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    Hi, I'm <span class="text-primary">Homolemo Ntswane</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-gray-400 mb-8">
+                    AI Intern
+                </h2>
+                
+                <div class="flex space-x-4">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-outline">View My Work</a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto rounded-full overflow-hidden border-4 border-primary">
+                    <img src="IMG_2506.jpeg" alt="Homolemo Ntswane" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-6 -left-6 w-64 h-64 rounded-full border-2 border-primary opacity-20"></div>
+                <div class="absolute -top-6 -right-6 w-64 h-64 rounded-full border-2 border-primary opacity-20"></div>
+            </div>
+        </div>
+    </section>
+
+   <!-- About Section -->
+<section id="about" class="py-20 px-6 md:px-12 lg:px-24">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="section-title text-center mb-16">About Me</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Who I Am</h3>
+                <p class="text-gray-300 mb-6">
+                    I'm a former Network Architecture tutor and current AI intern, building expertise across both infrastructure systems and machine learning applications.
+                </p>
+                <p class="text-gray-300 mb-6">
+                    As a former network architecture tutor, I've developed strong foundations in system design and infrastructure principles. In parallel, my work in AI focuses on creating AI , data-driven solutions using modern machine learning techniques.
+                </p>
+                <p class="text-gray-300 mb-8">
+                    This combination of teaching experience and technical implementation skills enables me to both understand complex systems and communicate technical concepts effectively. I'm particularly skilled at translating theoretical knowledge into practical applications that deliver measurable results.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="Homolemo CV.pdf" class="btn btn-outline" download>
+                        <i class="fas fa-download mr-2"></i> Download CV
+                    </a>
+                </div>
+            </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="card text-center p-6">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">5+ Certifications</h4>
+                        <p class="text-gray-400">AI & Cloud Technologies</p>
+                    </div>
+                    <div class="card text-center p-6">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Network Design</h4>
+                        <p class="text-gray-400">Architecture & Implementation</p>
+                    </div>
+                    <div class="card text-center p-6">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">AI Solutions</h4>
+                        <p class="text-gray-400">Practical Applications</p>
+                    </div>
+                    <div class="card text-center p-6">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Tutoring</h4>
+                        <p class="text-gray-400">Knowledge Sharing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-900 bg-opacity-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-center mb-16">My Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold ml-4">Technical Skills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="badge badge-primary">SQL</span>
+                        <span class="badge badge-primary">HTML</span>
+                        <span class="badge badge-primary">Network Design</span>
+                        <span class="badge badge-primary">IT Solutions</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="text-xl font-bold ml-4">Soft Skills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="badge badge-secondary">Verbal & Written Communication</span>
+                        <span class="badge badge-secondary">Attention to Detail</span>
+                        <span class="badge badge-secondary">Team Player</span>
+                        <span class="badge badge-secondary">Works Independently</span>
+                        <span class="badge badge-secondary">Works Under Pressure</span>
+                        <span class="badge badge-secondary">Problem Solving</span>
+                        <span class="badge badge-secondary">Time Management</span>
+                        <span class="badge badge-secondary">Willingness to Learn</span>
+                        <span class="badge badge-secondary">Project Management</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex items-center mb-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold ml-4">Software</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="badge badge-primary">MS Office</span>
+                        <span class="badge badge-primary">Microsoft Azure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 md:px-12 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-center mb-16">Professional Experience</h2>
+            
+            <div class="space-y-12">
+                <!-- Capaciti Experience -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold">AI Program Candidate</h3>
+                            <p class="text-primary">Capaciti – AI Program Academy for Women</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-primary bg-opacity-20 text-primary px-4 py-1 rounded-full text-sm font-medium">April 2025 - Present</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Completed intensive training in foundational and advanced AI concepts, including machine learning, deep learning, data science, computer vision, natural language processing (NLP), and ethical AI</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Engaged in hands-on, real-world AI projects, applying theoretical knowledge to practical problems and developing a professional AI portfolio</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Collaborated with peers in a diverse cohort, enhancing teamwork and communication skills within technical environments</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Received mentorship and career guidance from industry experts, fostering professional growth and expanding understanding of current trends and best practices in AI</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Participated in workshops and seminars, staying updated on the latest developments in AI and technology ethics</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rosebank College Experience -->
+                <div class="card p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold">Network Architecture Tutor</h3>
+                            <p class="text-primary">IIE Rosebank College – Pretoria Mega Campus</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="bg-primary bg-opacity-20 text-primary px-4 py-1 rounded-full text-sm font-medium">September 2023 - November 2024</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Designed and delivered lessons on network design, cabling, and signal degradation, improving students' understanding of networking fundamentals</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Provided in-depth guidance on network protocols, data link layer functions, and various network architectures</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Led practical sessions, enabling hands-on learning in network services design and wireless network management</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="w-3 h-3 bg-primary rounded-full"></div>
+                            </div>
+                            <p class="ml-4 text-gray-300">Facilitated project-based learning, fostering collaboration, critical thinking, and problem-solving skills among students</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section id="projects" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-900 bg-opacity-50">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="section-title text-center mb-16">Featured Projects</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="project-card">
+                <div class="flex items-start mb-4">
+                    <div class="feature-icon mr-4">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-1">Smart Health Analysis</h3>
+                        <p class="text-gray-400 text-sm mb-3">2025</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-4">
+                    An AI-powered chatbot that assists with health-related issues, providing preliminary analysis and recommendations based on symptoms described by users.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="badge badge-primary">AI Chatbot</span>
+                    <span class="badge badge-primary">Health Tech</span>
+                    <span class="badge badge-primary">NLP</span>
+                </div>
+                <a href="https://smart-health-assistant-68gx.onrender.com/" class="text-primary hover:underline font-medium">View Project →</a>
+            </div>
+            
+            <div class="project-card">
+                <div class="flex items-start mb-4">
+                    <div class="feature-icon mr-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-1">Sentiment Dashboard</h3>
+                        <p class="text-gray-400 text-sm mb-3">2025</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-4">
+                    Real-time sentiment analysis dashboard that processes social media data to provide visual insights into public opinion trends.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="badge badge-primary">NLP</span>
+                    <span class="badge badge-primary">Data Visualization</span>
+                    <span class="badge badge-primary">Social Media Analytics</span>
+                </div>
+                <a href="https://sentimental-dashboard-ceij7w4tknetq9xesrvu3d.streamlit.app/" class="text-primary hover:underline font-medium">View Project →</a>
+            </div>
+
+            <div class="project-card">
+                <div class="flex items-start mb-4">
+                    <div class="feature-icon mr-4">
+                        <i class="fas fa-file-alt"></i> 
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-xl mb-1">AI Resume Builder</h3>
+                        <p class="text-gray-400 text-sm mb-3">2025</p>
+                    </div>
+                </div>
+                <p class="text-gray-300 mb-4">
+                    An intelligent resume builder that leverages AI to help users craft professional and optimized resumes, suggesting improvements and tailoring content for specific job roles.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="badge badge-primary">AI</span>
+                    <span class="badge badge-primary">Resume Optimization</span>
+                    <span class="badge badge-primary">NLP</span>
+                </div>
+                <a href="https://ai-resume-builder-production-1f84.up.railway.app/" class="text-primary hover:underline font-medium">View Project →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 md:px-12 lg:px-24 bg-gray-900 bg-opacity-50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-center mb-16">Get In Touch</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Let's Connect</h3>
+                    <p class="text-gray-300 mb-8 max-w-lg">
+                        I'm always open to discussing new opportunities, collaborations, or just chatting about AI and network technologies. Feel free to reach out!
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-gray-400">homoh.ntswane@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                <i class="fab fa-linkedin-in text-primary"></i>
+                            </div>
+                            <div>
+                      
+                                <a href="www.linkedin.com/in/homolemo-ntswane-8797b4225" class="text-gray-400 hover:text-primary">linkedin.com/in/homolemo</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center mr-4">
+                                <i class="fab fa-github text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">GitHub</h4>
+                                <a href="https://github.com/HomolemoNtswane" class="text-gray-400 hover:text-primary">github.com/HomolemoNtswane</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-300 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-300 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 md:px-12 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-light">
+                        <span class="text-primary">Homolemo</span> Ntswane
+                    </a>
+                    <p class="text-gray-400 mt-2">AI Intern</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/homolemo-ntswane-8797b4225/?trk=public-profile-join-page" class="text-gray-400 hover:text-primary text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/HomolemoNtswane" class="text-gray-400 hover:text-primary text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Homolemo Ntswane. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
